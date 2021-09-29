@@ -3,24 +3,30 @@ function isValid () {
   let secondNum = prompt('Enter second number', '');
 
   if(!isNaN(firstNum) && !isNaN(secondNum)) {
-    let parsed = parseInt(firstNum, secondNum);
-    if (isNaN(parsed)) { 
-      console.log(0); 
+    if(secondNum % 1 === 0 && isFinite(secondNum)) {
+      let parsed = parseInt(firstNum, secondNum);
+      if (isNaN(parsed)) { 
+        console.log(0); 
+      } else {
+        console.log(parsed);
+      };
     } else {
-      console.log(parsed);
-    };
+      console.log(0); 
+    }
   } else {
     console.log('Некорректный ввод!');
   };
 };
 
-isValid();
-
 
 
 function calculate () {
   let firstNum = prompt('Enter first number', '');
-  let secondNum = prompt('Enter second number', '');
+  let secondNum;
+
+  if (!isNaN(firstNum))  {
+    secondNum = prompt('Enter second number', '');
+  };
 
   if(!isNaN(firstNum) && !isNaN(secondNum)) {
     function calc () {
@@ -29,17 +35,9 @@ function calculate () {
       console.log('Ответ:', sumResult, subResult);
     };
     calc();
-  } else 
-    if(!isNaN(firstNum)) {
-      console.log('Некорректный ввод!')
-  } else 
-    if (!isNaN(secondNum)) {
-      console.log('Некорректный ввод!')
   } else {
       console.log('Некорректный ввод!')
   }
 };
-
-calculate();
 
 
