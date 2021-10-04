@@ -26,10 +26,10 @@ function selectFromInterval(arr, min, max) {
   } else {
       if (max < min) {
         newArr = arr.filter(v => v <= min && v >= max);
-        console.log(newArr);
+        return newArr;
       } else {
         newArr = arr.filter(v => v >= min && v <= max);
-        console.log(newArr);
+        return newArr;
       }
   };
 }
@@ -56,6 +56,3 @@ const myIterable = {
     }
   }
 };
-for (let item of myIterable) {
-    console.log(item); 
-}
