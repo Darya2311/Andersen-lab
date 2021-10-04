@@ -2,7 +2,12 @@ function makeObjectDeepCopy(obj) {
   const cloneObj = {};
   for(let key in obj) {
     if(obj.hasOwnProperty(key)) {
-      cloneObj[key] = obj[key];
+      if((typeof obj[key] === "object")) {
+        cloneObj[key] = makeObjectDeepCopy(obj[key]);
+        continue;
+      } else {
+        cloneObj[key] = obj[key];
+      }
     }
   }
   return cloneObj;
