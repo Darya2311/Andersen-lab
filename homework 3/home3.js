@@ -1,18 +1,13 @@
-Array.prototype.myFilter =  function (callbackFunc, thisObject) {
-  let context = this;
-  if (arguments.length > 1) {
-    context = thisObject;
-  };
+Array.prototype.myFilter =  function (callbackFunc, thisArg) {
   if(typeof callbackFunc !== 'function') {
     throw new Error('callback is not a function')
   };
   let filtered = [];
   for(let i = 0; i < this.length; i++) {
-    if (callbackFunc.call(context, this[i], i, this)) filtered.push(this[i]);
+    if (callbackFunc(this[i], i, this)) filtered.push(this[i]);
   }
   return filtered;
 };
-
 
 
 
