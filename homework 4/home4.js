@@ -1,16 +1,23 @@
 function concatStrings(str, separator) {
+  if (typeof str !== 'string') {
+    return '';
+  }
   let meaning = str;
   let next;
-
   return function callback() {
     next = arguments[0];
     if (typeof(next) === 'string' && typeof(separator) === 'string') {
-      separator ? meaning += separator + next : meaning += next;
+      if(separator) {
+        meaning += separator + next 
+      } else {
+        meaning += next
+      };
       return callback;
-    }
+    };
     return meaning;
-  }
-}
+  };
+};
+
 
 
 
