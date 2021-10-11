@@ -6,8 +6,8 @@ function concatStrings(str, separator) {
   let next;
   return function callback() {
     next = arguments[0];
-    if (typeof(next) === 'string' && typeof(separator) === 'string') {
-      if(separator) {
+    if (typeof(next) === 'string') {
+      if(separator && typeof(separator) === 'string') {
         meaning += separator + next 
       } else {
         meaning += next
@@ -17,8 +17,6 @@ function concatStrings(str, separator) {
     return meaning;
   };
 };
-
-
 
 
 class Calculator {
