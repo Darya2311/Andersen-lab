@@ -24,6 +24,8 @@ class Calculator {
     if (!x || !y || isNaN(x || y) || !isFinite(x) || !isFinite(y) || typeof (x) !== 'number' || typeof (y) !== 'number') {
       throw new Error('Error is happened!');
     }
+    this.x = x;
+    this.y = y;
     this.logSum = function() {
       console.log(x + y);
     };
