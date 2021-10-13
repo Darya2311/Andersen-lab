@@ -26,33 +26,27 @@ class Calculator {
     }
     this.x = x;
     this.y = y;
-    this.logSum = function() {
-      console.log(x + y);
-    };
-    this.logMul = function() {
-      console.log(x * y);
-    };
-    this.logSub = function() {
-      console.log(x - y);
-    };
-    this.logDiv = function() {
+    this.logSum = () => console.log(this.x + this.y);
+    this.logMul = () => console.log(this.x * this.y);
+    this.logSub = () => console.log(this.x - this.y);
+    this.logDiv = () => {
       if(y === 0) {
         throw new Error('Error is happened!');
       } 
-      console.log(x / y);
+      console.log(this.x / this.y);
     };
-    this.setX = function (num) {
+    this.setX = (num) => {
       if(!num || isNaN(num) || !isFinite(num) || typeof(num) !== 'number') {
         throw new Error('Error is happened!');
       } else {
-        x = num;
+        this.x = num;
       }
     };
-    this.setY = function (num) {
+    this.setY = (num) => {
       if(!num || isNaN(num) || !isFinite(num) || typeof(num) !== 'number') {
         throw new Error('Error is happened!');
       } else {
-        y = num;
+        this.y = num;
       }
     };
   };
