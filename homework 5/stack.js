@@ -75,7 +75,7 @@ class Stack {
   };
 
   static fromIterable(iterable) {
-    if(iterable === null && typeof iterable[Symbol.iterator] !== 'function')
+    if(iterable === null || typeof iterable[Symbol.iterator] !== 'function')
     throw new Error('Non-iterable entity');
     const iterableStack = new Stack(iterable.length);
     for(let element of iterable) {
