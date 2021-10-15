@@ -55,11 +55,7 @@ class Stack {
   };
 
   isEmpty(){
-    if(this.head){
-      return false
-    } else {
-      return true
-    }
+    return this.length === 0 ? true : false;
   };
 
   toArray() {
@@ -87,6 +83,9 @@ class Stack {
 
 
 
+
+
+
 class LinkedList {
   constructor () {
     this.head = null;
@@ -97,7 +96,7 @@ class LinkedList {
     const node = new Node(elem);
 
     if(this.tail) {
-      this.tail.next - node
+      this.tail.next = node
     };
 
     if(!this.head) {
@@ -161,4 +160,4 @@ class LinkedList {
 
 
 
-module.exports = { Stack };
+// module.exports = { Stack };
