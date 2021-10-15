@@ -75,11 +75,15 @@ class Stack {
   };
 
   static fromIterable(iterable) {
-    return new Stack();
+    if(iterable === null && typeof iterable[Symbol.iterator] !== 'function')
+    throw new Error('Non-iterable entity');
+    const iterableStack = new Stack(iterable.length);
+    for(let element of iterable) {
+      iterableStack.push(element);
+    };
+    return iterableStack;
   }
 };
-
-
 
 
 
@@ -142,6 +146,16 @@ class LinkedList {
 
     return arr;
   };
+
+  static fromIterable(iterable) {
+    if(iterable === null || typeof iterable[Symbol.iterator] !== 'function')
+    throw new Error('Non-iterable entity');
+    const iterableList = new LinkedList();
+    for(let element of iterable) {
+      iterableList.append(element);
+    };
+    return iterableList;
+  }
 
 };
 
