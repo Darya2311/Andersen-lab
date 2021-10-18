@@ -1,4 +1,5 @@
 class Car {
+  constructor() {};
   #brand;
 
   set brand(value) {
@@ -180,8 +181,6 @@ class Car {
     };
   }
 };
-
-
 
 
 module.exports = { Car };
