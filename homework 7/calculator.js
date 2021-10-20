@@ -2,17 +2,18 @@ const accountCalc = document.querySelector('.account'),
       resultCalc = document.querySelector('.result'),
       tempResult = document.querySelector('.temp-result'),
       numbersElement = document.querySelectorAll('.number'),
-      operationElement = document.querySelectorAll('.operation'),
       equalElement = document.querySelector('.equal'),
       backElement = document.querySelector('.backspace'),
       reversElement = document.querySelector('.revers'),
-      clearElement = document.querySelector('.clear');
+      clearElement = document.querySelector('.clear'),
+      operationElement = document.querySelectorAll('.operation');
 
 let disNum1 = '';
 let disNum2 = '';
 let result = null;
 let lastOperation = '';
 let haveDot = false;
+
 
 numbersElement.forEach(number => {
   number.addEventListener('click', (e) => {
@@ -23,6 +24,7 @@ numbersElement.forEach(number => {
     };
     disNum2 += e.target.innerText;
     resultCalc.innerText = disNum2;
+    checking();
   });
 });
 
@@ -37,14 +39,12 @@ operationElement.forEach(operation => {
       return resultCalc.innerText = (disNum2);
     }
     if(disNum1 && disNum2 && lastOperation) {
-      clicked = true;
       mathOperation();
     } else {
       result = parseFloat(disNum2);
     }
     clearVar(operationName);
     lastOperation = operationName;
-
   });
 });
 
@@ -104,6 +104,7 @@ clearElement.addEventListener('click', (event) => {
   disNum1 = '';
   disNum2 = '';
   result = '';
+  addAtribute();
 });
 
 backElement.addEventListener('click', backSpaceFunc);
@@ -146,6 +147,28 @@ function clickButtonElement(key) {
   });
 };
 
+
+function checking() {
+  if(resultCalc.innerText != '') {
+    let btns = document.getElementsByClassName('operation');
+    let btnsArray = Array.from(btns);
+    btnsArray.forEach(button => {
+      button.removeAttribute('disabled');
+    }); 
+  };
+};
+
+
+function addAtribute() {
+  if(resultCalc.innerText === '0,00' || disNum2 === '') {
+    let btns = document.getElementsByClassName('operation');
+    let btnsArray = Array.from(btns);
+    btnsArray.forEach(button => {
+      button.setAttribute('disabled', true);
+    }); 
+  };
+};
+
 function clickOperationElement(key) {
   operationElement.forEach(button => {
     if(button.innerText === key) {
@@ -162,9 +185,10 @@ function backSpaceFunc () {
   let str = resultCalc.innerText;
   resultCalc.innerText = str.substring(0, str.length -1);
   if (resultCalc.innerText === '') {
-    resultCalc.innerText = 0;
+    resultCalc.innerText === 0;
     disNum2 = '';
+    addAtribute();
   } else  {
-    disNum2 =  resultCalc.innerText;
-  }
-}
+    disNum2 = resultCalc.innerText;
+  };
+};

@@ -25,7 +25,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .header {
-  padding: 40px 0 20px 0;
+  padding: 40px 0 20px 20px;
   background: #212121c4;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -33,22 +33,23 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
 }
 .header > div {
+  display: flex;
+  justify-content: flex-end;
   box-sizing: border-box;
   width: 90%;
   height: 30px;
   border: none;
   outline: none;
   border-radius: 5px;
-  text-align: right;
-  padding-left: 10px;
   background: transparent;
   font-size: 20px;
   color: #d98192;
   overflow: hidden;
+  
 }
 .header > .temp-result {
   padding-left: 20px;
-  text-align: left;
+  justify-content: flex-start;
 }
 
 .account {
