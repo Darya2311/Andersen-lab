@@ -14,7 +14,6 @@ let result = null;
 let lastOperation = '';
 let haveDot = false;
 
-
 numbersElement.forEach(number => {
   number.addEventListener('click', (e) => {
     if(e.target.innerText === '.' && !haveDot) {
@@ -35,15 +34,17 @@ operationElement.forEach(operation => {
     let operationName = e.target.innerText;
     if(e.target.innerText === '+/-') {
       disNum2 = disNum2 * -1;
-      return resultCalc.innerText = disNum2;
+      return resultCalc.innerText = (disNum2);
     }
     if(disNum1 && disNum2 && lastOperation) {
+      clicked = true;
       mathOperation();
     } else {
       result = parseFloat(disNum2);
     }
     clearVar(operationName);
     lastOperation = operationName;
+
   });
 });
 
@@ -62,13 +63,25 @@ function mathOperation() {
   }
   if(lastOperation === 'X') {
     result = parseFloat(result) * parseFloat(disNum2);
+    if(!Number.isInteger(result)) {
+      result = parseFloat(result).toFixed(8);
+    };
   } else if( lastOperation === '+') {
     result = parseFloat(result) + parseFloat(disNum2);
+    if(!Number.isInteger(result)) {
+      result = parseFloat(result).toFixed(8);
+    };
   } else if( lastOperation === '-') {
     result = parseFloat(result) - parseFloat(disNum2);
+    if(!Number.isInteger(result)) {
+      result = parseFloat(result).toFixed(8);
+    };
   } else if( lastOperation === '/') {
     result = parseFloat(result) / parseFloat(disNum2);
-  }
+    if(!Number.isInteger(result)) {
+      result = parseFloat(result).toFixed(8);
+    };
+  } 
 };
 
 equalElement.addEventListener('click', (event) => {
@@ -80,7 +93,7 @@ equalElement.addEventListener('click', (event) => {
   tempResult.innerText = '';
   disNum2 = result;
   disNum1 = '';
-  disNum2 = '';
+  // disNum2 = '';
 });
 
 
