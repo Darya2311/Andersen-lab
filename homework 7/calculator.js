@@ -15,6 +15,7 @@ let lastOperation = '';
 let haveDot = false;
 
 
+
 numbersElement.forEach(number => {
   number.addEventListener('click', (e) => {
     if(e.target.innerText === '.' && !haveDot) {
@@ -50,7 +51,7 @@ operationElement.forEach(operation => {
 
 
 function clearVar(name = '') {
-  disNum1 += disNum2 + ' ' + name + ' ';
+  disNum1 += disNum2 + ' ' + name + ' ' ;
   accountCalc.innerText = disNum1;
   resultCalc.innerText = '';
   disNum2 = '';
@@ -60,9 +61,11 @@ function clearVar(name = '') {
 function mathOperation() {
   if (!disNum2) {
     disNum2 = 0;
-  }
+  };
   if(lastOperation === 'X') {
     result = parseFloat(result) * parseFloat(disNum2);
+
+    console.log(result)
     if(!Number.isInteger(result)) {
       result = parseFloat(result).toFixed(8);
     };
@@ -84,7 +87,7 @@ function mathOperation() {
   } 
 };
 
-equalElement.addEventListener('click', (event) => {
+equalElement.addEventListener('click', () => {
   if (!disNum1 && !disNum2) return;
   haveDot = false;
   mathOperation();
@@ -93,14 +96,16 @@ equalElement.addEventListener('click', (event) => {
   tempResult.innerText = '';
   disNum2 = result;
   disNum1 = '';
-  // disNum2 = '';
+  if(disNum2 === null) {
+    disNum2 = 0;
+  }
 });
 
 
-clearElement.addEventListener('click', (event) => {
-  accountCalc.innerText = '0,00';
-  resultCalc.innerText = '0,00';
-  tempResult.innerText = '0,00';
+clearElement.addEventListener('click', () => {
+  accountCalc.innerText = '0';
+  resultCalc.innerText = '0';
+  tempResult.innerText = '0';
   disNum1 = '';
   disNum2 = '';
   result = '';
@@ -160,7 +165,7 @@ function checking() {
 
 
 function addAtribute() {
-  if(resultCalc.innerText === '0,00' || disNum2 === '') {
+  if(resultCalc.innerText === '0' || disNum2 === '') {
     let btns = document.getElementsByClassName('operation');
     let btnsArray = Array.from(btns);
     btnsArray.forEach(button => {
@@ -185,7 +190,7 @@ function backSpaceFunc () {
   let str = resultCalc.innerText;
   resultCalc.innerText = str.substring(0, str.length -1);
   if (resultCalc.innerText === '') {
-    resultCalc.innerText === 0;
+    resultCalc.innerText = 0;
     disNum2 = '';
     addAtribute();
   } else  {
