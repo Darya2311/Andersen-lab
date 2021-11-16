@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      .main {
+        text-transform: uppercase;
+        color: rgb(20, 107, 78);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      .info {
+        margin: 20px 0;
+        width: 300px;
+        line-height: 20px;
+        border: 2px solid rgb(175, 127, 38);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      function Hello() {
+        return <div className='main'> Hello World!
+          <input className='info'></input>
+          <p>Welcome!</p>
+        </div>;
+      }
+
+
+      const element = <Hello/>;
+      ReactDOM.render(
+        element,
+        document.getElementById('root')
+      );
+    </script>
+
+  </body>
+</html>

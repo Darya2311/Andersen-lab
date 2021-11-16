@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      text-transform: uppercase;
+      color: rgb(20, 107, 78);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    input {
+      margin: 20px 0;
+      width: 300px;
+      line-height: 20px;
+      border: 2px solid rgb(175, 127, 38);
+    }
+  </style>
+</head>
+<body>
+  
+  <script>
+    let div = document.createElement('div');
+    div.innerHTML = 'Hello world!';
+    document.body.prepend(div);
+
+    let input = document.createElement('input');
+    div.append(input);
+
+    let paragraph = document.createElement('p');
+    paragraph.innerHTML = 'Welcome!';
+    div.append(paragraph);
+  </script>
+  
+</body>
+</html>
